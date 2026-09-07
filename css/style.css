@@ -553,6 +553,7 @@ section { padding: 72px 0; }
 
 /* ---- Schedule ---- */
 .schedule-wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 36px; align-items: start; }
+.schedule-wrap.schedule-simple { grid-template-columns: minmax(0, 760px); justify-content: center; }
 table.schedule {
   width: 100%;
   border-collapse: collapse;
