@@ -68,6 +68,37 @@
     timerId = window.setInterval(renderCountdown, 1000);
   }
 
+  // Student testimonials carousel.
+  var testimonials = document.querySelector("[data-testimonials-carousel]");
+  if (testimonials) {
+    var testimonialCards = Array.prototype.slice.call(testimonials.querySelectorAll(".testimonial-card"));
+    var previousReview = document.querySelector("[data-carousel-prev]");
+    var nextReview = document.querySelector("[data-carousel-next]");
+    var dotsContainer = document.querySelector("[data-carousel-dots]");
+    var activeReview = 0;
+
+    testimonialCards.forEach(function (_, index) {
+      var dot = document.createElement("span");
+      dot.className = "carousel-dot" + (index === 0 ? " is-active" : "");
+      dotsContainer.appendChild(dot);
+    });
+
+    function showReview(index) {
+      activeReview = (index + testimonialCards.length) % testimonialCards.length;
+      testimonialCards[activeReview].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      dotsContainer.querySelectorAll(".carousel-dot").forEach(function (dot, dotIndex) {
+        dot.classList.toggle("is-active", dotIndex === activeReview);
+      });
+    }
+
+    previousReview.addEventListener("click", function () { showReview(activeReview - 1); });
+    nextReview.addEventListener("click", function () { showReview(activeReview + 1); });
+    testimonials.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowLeft") showReview(activeReview + 1);
+      if (event.key === "ArrowRight") showReview(activeReview - 1);
+    });
+  }
+
   // Mobile nav toggle.
   var hamburger = document.querySelector(".hamburger");
   var mobileNav = document.querySelector(".mobile-nav");
