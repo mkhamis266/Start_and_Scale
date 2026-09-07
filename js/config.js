@@ -18,7 +18,7 @@ window.SITE_CONFIG = {
   DOMAIN: "mkhamis266.github.io",
 
   // Prefilled WhatsApp message.
-  WHATSAPP_MESSAGE: "عايز أعرف مواعيد كورس Start and Scale الأوفلاين وعرض التقسيط بدون فوايد",
+  WHATSAPP_MESSAGE: "عايز أعرف مواعيد كورس",
 
   // Lead form (§4.14) submissions POST here as a Google Apps Script Web App
   // that appends a row to a Google Sheet. See site/GOOGLE_SHEET_SETUP.md for
