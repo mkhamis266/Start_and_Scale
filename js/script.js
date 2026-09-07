@@ -24,6 +24,50 @@
     if (cfg[key] !== undefined) el.innerHTML = cfg[key];
   });
 
+  // Personal 24-hour offer window. The deadline is saved on first visit so
+  // refreshing or reopening the page on the same browser does not reset it.
+  var countdown = document.querySelector("[data-offer-countdown]");
+  if (countdown) {
+    var storageKey = "startAndScaleOfferDeadline";
+    var deadline;
+    try {
+      deadline = Number(window.localStorage.getItem(storageKey));
+      if (!deadline) {
+        deadline = Date.now() + (24 * 60 * 60 * 1000);
+        window.localStorage.setItem(storageKey, String(deadline));
+      }
+    } catch (storageError) {
+      deadline = Date.now() + (24 * 60 * 60 * 1000);
+    }
+
+    var hoursEl = countdown.querySelector("[data-countdown-hours]");
+    var minutesEl = countdown.querySelector("[data-countdown-minutes]");
+    var secondsEl = countdown.querySelector("[data-countdown-seconds]");
+    var messageEl = countdown.querySelector("[data-countdown-message]");
+    var timerId;
+
+    function twoDigits(value) {
+      return String(value).padStart(2, "0");
+    }
+
+    function renderCountdown() {
+      var remaining = Math.max(0, deadline - Date.now());
+      var totalSeconds = Math.floor(remaining / 1000);
+      hoursEl.textContent = twoDigits(Math.floor(totalSeconds / 3600));
+      minutesEl.textContent = twoDigits(Math.floor((totalSeconds % 3600) / 60));
+      secondsEl.textContent = twoDigits(totalSeconds % 60);
+
+      if (remaining <= 0) {
+        countdown.classList.add("is-expired");
+        messageEl.textContent = "انتهى وقت العرض الخاص على جهازك. كلمنا على واتساب لمعرفة السعر والعروض المتاحة حاليًا.";
+        if (timerId) window.clearInterval(timerId);
+      }
+    }
+
+    renderCountdown();
+    timerId = window.setInterval(renderCountdown, 1000);
+  }
+
   // Mobile nav toggle.
   var hamburger = document.querySelector(".hamburger");
   var mobileNav = document.querySelector(".mobile-nav");

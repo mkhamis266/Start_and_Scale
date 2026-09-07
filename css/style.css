@@ -581,6 +581,45 @@ table.schedule tr:last-child td { border-bottom: none; }
   color: var(--navy-900);
 }
 .price-currency { font-size: 18px; font-weight: 700; }
+.offer-countdown {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid rgba(220, 174, 64, 0.42);
+  border-radius: 16px;
+  background: linear-gradient(135deg, #fffaf0, #fff);
+}
+.countdown-kicker {
+  margin: 0 0 14px;
+  color: var(--navy-900);
+  font-weight: 800;
+}
+.countdown-units {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+.countdown-unit {
+  display: grid;
+  place-items: center;
+  width: 78px;
+  min-height: 76px;
+  padding: 8px;
+  border-radius: 12px;
+  color: var(--white);
+  background: var(--navy-900);
+  box-shadow: 0 8px 20px rgba(14, 27, 54, 0.15);
+}
+.countdown-unit strong {
+  font-size: 30px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.countdown-unit small { margin-top: 6px; font-size: 12px; color: #e8edf8; }
+.countdown-separator { padding-top: 13px; color: var(--gold-600); font-size: 26px; font-weight: 900; }
+.countdown-message { margin: 14px 0 0; color: #57607a; font-size: 14px; line-height: 1.8; }
+.offer-countdown.is-expired { border-color: #d7dbe5; background: #f7f8fb; }
+.offer-countdown.is-expired .countdown-unit { background: #737b8f; }
 .urgency-line {
   color: var(--gold-600);
   font-weight: 800;
@@ -793,6 +832,9 @@ table.schedule tr:last-child td { border-bottom: none; }
   .mobile-bar { display: flex; }
   body { padding-bottom: 74px; }
   .pricing-card { padding: 30px 20px; }
+  .offer-countdown { padding: 18px 12px; }
+  .countdown-unit { width: 68px; min-height: 70px; }
+  .countdown-unit strong { font-size: 26px; }
   .logo { font-size: 15px; white-space: nowrap; }
   .logo small { font-size: 8px; letter-spacing: 1px; }
   .site-header .container { gap: 10px; }
