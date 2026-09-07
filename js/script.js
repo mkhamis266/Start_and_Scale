@@ -73,7 +73,7 @@
   // Lead form — submits to a Google Apps Script Web App that appends a row
   // to a Google Sheet. See site/GOOGLE_SHEET_SETUP.md to get the endpoint
   // URL and set it as LEAD_FORM_ENDPOINT in config.js. Until that's set,
-  // submissions are not sent anywhere (still show a local success message).
+  // submissions are not sent; visitors are directed to WhatsApp.
   var leadForm = document.getElementById("lead-form");
   if (leadForm) {
     leadForm.addEventListener("submit", function (e) {
@@ -85,10 +85,15 @@
       data.set("page_url", window.location.href);
       data.set("submitted_at", new Date().toISOString());
 
+      function showStatus(message) {
+        if (successBox) { successBox.textContent = message; successBox.classList.add("show"); }
+        if (submitBtn) submitBtn.disabled = false;
+      }
+
       function done() {
-        if (typeof fbq === "function") fbq("track", "Lead");
+        showStatus("تم إرسال الطلب، لكن مش قادرين نأكد استلامه. تواصل معانا على واتساب لتأكيد الاستفسار.");
         if (successBox) successBox.classList.add("show");
-        leadForm.reset();
+
         if (submitBtn) submitBtn.disabled = false;
       }
 
@@ -96,14 +101,16 @@
         if (submitBtn) submitBtn.disabled = true;
         // Apps Script Web Apps don't return CORS headers on simple POSTs,
         // so the response body is opaque; "no-cors" lets the request go
-        // through and still succeed server-side (it does write the row).
+        // through, but cannot confirm that the server saved the submission.
         fetch(cfg.LEAD_FORM_ENDPOINT, {
           method: "POST",
           mode: "no-cors",
           body: data,
-        }).then(done).catch(done);
+        }).then(done).catch(function () {
+          showStatus("تعذر إرسال الطلب. بياناتك لسه موجودة، حاول تاني أو كلمنا على واتساب.");
+        });
       } else {
-        done();
+        showStatus("الاستمارة مش متصلة حاليًا. كلمنا على واتساب للاستفسار عن المواعيد والتقسيط.");
       }
     });
   }
@@ -126,3 +133,4 @@
     });
   }
 })();
+
