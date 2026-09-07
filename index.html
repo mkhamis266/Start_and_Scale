@@ -444,7 +444,15 @@
         <input type="tel" id="phone" name="phone" required placeholder="01xxxxxxxxx" pattern="[0-9+ ]{8,15}">
       </div>
       <div class="field">
-        <label for="group">نوع الطلب</label><select id="group" name="group"><option value="offline-schedule">مواعيد الكورس الأوفلاين</option><option value="installments">تفاصيل التقسيط بدون فوايد</option></select>
+        <label for="group">نوع الكورس والموعد المناسب</label>
+        <select id="group" name="group">
+          <option value="offline-weekend-evening">كورسات أوفلاين الجمعة والسبت مساءً</option>
+          <option value="offline-weekdays-evening">كورسات أوفلاين أيام الأسبوع مساءً</option>
+          <option value="offline-weekend-morning">كورسات أوفلاين الجمعة والسبت صباحًا</option>
+          <option value="offline-weekdays-morning">كورسات أوفلاين أيام الأسبوع صباحًا</option>
+          <option value="online-morning">كورسات أونلاين صباحًا</option>
+          <option value="online-evening">كورسات أونلاين مساءً</option>
+        </select>
       </div>
       <button type="submit" class="btn btn-primary btn-block">احجز مكانك</button>
       <p class="form-note">للاستفسار عن المواعيد والتقسيط. إرسال الاستفسار مش تأكيد نهائي للحجز.</p>
