@@ -7,7 +7,7 @@
  */
 window.SITE_CONFIG = {
   // Confirmed course contact and current booking call to action.
-  WHATSAPP_NUMBER: "201092144133",
+  WHATSAPP_NUMBER: "201107351322",
   URGENCY_LINE: "اسأل عن المواعيد وعرض التقسيط بدون فوايد",
 
   // Instructor summary based on public posts from the confirmed LinkedIn account.
