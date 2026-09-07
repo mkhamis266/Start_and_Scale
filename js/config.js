@@ -11,8 +11,8 @@ window.SITE_CONFIG = {
   URGENCY_LINE: "اسأل عن المواعيد وعرض التقسيط بدون فوايد",
 
   // Instructor summary based on public posts from the confirmed LinkedIn account.
-  INSTRUCTOR_BIO: "بتشارك شروق محتوى عملي عن التسويق الرقمي والإعلانات، وقدّمت ورشة عن تسويق التجارة الإلكترونية بالتعاون مع اتصال أسيوط.",
-  INSTRUCTOR_ROLE_PLACEHOLDER: "مدرّبة ومتخصصة فى التسويق الرقمي", // review before publishing
+  INSTRUCTOR_BIO: "خبرة 8 سنوات في التسويق الرقمي والإعلانات الممولة، جمعت خلالها بين تنفيذ الحملات في أسواق مختلفة وتدريب آلاف الطلاب على التطبيق العملي.",
+  INSTRUCTOR_ROLE_PLACEHOLDER: "خبيرة تسويق رقمي وإعلانات ممولة | محاضِرة ومدرّبة",
 
   // §1.8 — production domain, used for canonical/OG URLs.
   DOMAIN: "mkhamis266.github.io",
@@ -26,6 +26,5 @@ window.SITE_CONFIG = {
   // disabled for delivery, with an honest status directing visitors to WhatsApp.
   LEAD_FORM_ENDPOINT: "",
 };
-
 
 
